@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Binding</title>
+    <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+      }
+      .done-true {
+        text-decoration: line-through;
+        color: grey;
+      }
+
+      .done-false {
+        color:red;
+      }
+
+    </style>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>JS 220</h1>
+      <div ng-app="todoApp">
+        <div ng-controller="todoController">
+          <h1>Todo List</h1>
+          <ul>
+            <li ng-repeat="todo in todos">
+              <label>
+                <input type="checkbox" ng-model="todo.done">
+                <span class="done-{{todo.done}}" ng-bind="todo.text"></span>
+              </label>
+            </li>
+          </ul>
+          <form ng-submit="addTodos()">
+            <input type="text" ng-model="todoText" placeholder="add todo here">
+            <input type="submit" value="add">
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
+    <script type="text/javascript">
+      angular.module('todoApp',[])
+        .controller('todoController', function($scope) {
+          $scope.name = 'Harjas';
+          $scope.todos = [{text: 'First todo',
+                           done: false},
+                          {text: 'Second todo',
+                           done: false},
+                         ];
+          $scope.addTodos = function() {
+            $scope.todos.push({text:$scope.todoText, done: false});
+            $scope.todoText = '';
+          }
+        })
+    </script>
+  </body>
+</html>
