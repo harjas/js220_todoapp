@@ -1,0 +1,44 @@
+<h1>JS 220</h1>
+  <div ng-controller="todoController">
+    <!-- List 1 -->
+    <h3>List 1</h3>
+    <ul>
+      <li ng-repeat="todo in todos">
+        <label>
+          <input type="checkbox" ng-model="todo.done" ng-click="removeTodos($index)">
+          <span class="done-{{todo.done}}" ng-bind="todo.text"></span>
+        </label>
+      </li>
+    </ul>
+
+    <!-- List 2 -->
+    <h3>List 2</h3>
+    <a href="" ng-click="archive()">archive</a>
+    <ul>
+      <li ng-repeat="todo in todos">
+        <label>
+          <input type="checkbox" ng-model="todo.done">
+          <span class="done-{{todo.done}}" ng-bind="todo.text"></span>
+        </label>
+      </li>
+    </ul>
+
+    <!-- List 3 -->
+    <h3>List 3</h3>
+    <ul>
+      <li ng-repeat="todo in todos | filter:xyz | orderBy:'text'">
+        <label>
+          <input type="checkbox" ng-model="todo.done">
+          <span class="done-{{todo.done}}" ng-bind="todo.text"></span>
+          <a href="" class="show-{{todo.done}}" ng-click="removeTodos($index)">x</a>
+        </label>
+      </li>
+    </ul>
+
+    <input type="text" placeholder="search" ng-model="xyz">
+
+    <form ng-submit="addTodos()">
+      <input type="text" ng-model="todoText" placeholder="add todo here">
+      <input type="submit" value="add">
+    </form>
+  </div>

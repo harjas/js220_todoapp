@@ -1,0 +1,15 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+  }
+  .done-true {
+    text-decoration: line-through;
+    color: grey;
+  }
+
+  .done-false {
+    color:red;
+  }
+
+  .show-false{
+    display:none;
+  }
